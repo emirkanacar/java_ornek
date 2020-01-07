@@ -55,7 +55,7 @@ public class Ornek1 {
             }
         }
 
-        System.out.println("Menü: (1 Listeleme - 2 İstenilen Şehir Bilgisi - 3 Evlilerin Maaş Ort - 4 Bekar Yaş Ort - 5 Ort,Büyük,Küçük Maaş Ort)");
+        System.out.println("Menü: (1 Listeleme - 2 İstenilen Şehir Bilgisi - 3 Evlilerin Maaş Ort - 4 Bekar Yaş Ort - 5 Ort,Büyük,Küçük Maaş Ort - 6 Çıkış)");
         menu = k.nextInt();
 
         switch (menu){

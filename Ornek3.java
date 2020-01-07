@@ -2,8 +2,7 @@ package com.relakith;
 
 import java.util.Scanner;
 
-
-public class Ornek2 {
+public class Ornek3 {
 
     public static void main(String[] args) {
         Scanner k = new Scanner(System.in);
@@ -71,34 +70,12 @@ public class Ornek2 {
 
         switch (menu){
             case 1:
-                System.out.println("İsim \t Doğum Yeri \t Doğum Tarihi \t Medeni Durum \t Maaş");
-                for (int i = 0; isimler.length > i; i++)
-                {
-                    String medeniD = "";
-                    if(medeniDurum[i] == 0) medeniD = "Bekar";
-                    else medeniD = "Evli";
-
-                    System.out.print(isimler[i] + " \t " + dogumYerleri[i] + " \t " + dogumTarih[i] + " \t " + medeniD + " \t " + maaslar[i]);
-                    System.out.println();
-                }
+                Listele(isimler, dogumYerleri, dogumTarih, medeniDurum, maaslar);
                 break;
             case 2:
                 System.out.println("Şehir Girin: ");
                 String tempSehir = k.next();
-
-                for (int i = 0; isimler.length > i; i++)
-                {
-                    if(dogumYerleri[i].equalsIgnoreCase(tempSehir))
-                    {
-                        String medeniD = "";
-                        if(medeniDurum[i] == 0) medeniD = "Bekar";
-                        else medeniD = "Evli";
-
-                        System.out.println("İsim: " + isimler[i] + " Doğum Yeri: " + dogumYerleri[i] + " Doğum Tarihi: " + dogumTarih[i] + " Medeni Durum: " + medeniD + " Maaş: " +  maaslar[i]);
-                    }else {
-                        System.out.println("Uygun Kayıt Bulunamadı!");
-                    }
-                }
+                sehirArama(dogumYerleri, tempSehir, medeniDurum, isimler, dogumTarih, maaslar);
                 break;
             case 3:
                 System.out.println("Evlilerin Maaş Ortalaması: " + (evliMaasOrt / evliSayi));
@@ -118,17 +95,6 @@ public class Ornek2 {
                 System.out.println("Geçerli bir işlem kodu giriniz!");
                 break;
         }
-
-        /*for (int i = 0; data.length > i; i++)
-        {
-            for (int j = 0; data[i].length > j; j++)
-            {
-                System.out.println(data[i][j]);
-            }
-        }*/
-
-
-
     }
     public static int enBuyuk(int[] data)
     {
@@ -137,10 +103,7 @@ public class Ornek2 {
         {
             int tempVal = data[i];
             enBuyuk = tempVal;
-            if(data[i]> tempVal)
-            {
-                enBuyuk = data[i];
-            }
+            if(data[i]> tempVal)enBuyuk = data[i];
         }
 
         return enBuyuk;
@@ -153,12 +116,42 @@ public class Ornek2 {
         {
             int tempVal = data[0];
             enKucuk = tempVal;
-            if(tempVal > data[i])
-            {
-                enKucuk = tempVal;
-            }
+            if(tempVal > data[i]) enKucuk = tempVal;
         }
 
         return enKucuk;
     }
+
+    public static void sehirArama(String sehirler[], String tempSehir, int medeniDurum[], String isimler[], int dogumTarih[], int maaslar[])
+    {
+
+        for (int i = 0; sehirler.length > i; i++)
+        {
+            if(sehirler[i].equalsIgnoreCase(tempSehir))
+            {
+                String medeniD = "";
+                if(medeniDurum[i] == 0) medeniD = "Bekar";
+                else medeniD = "Evli";
+                System.out.println("İsim: " + isimler[i] + " Doğum Yeri: " + sehirler[i] + " Doğum Tarihi: " + dogumTarih[i] + " Medeni Durum: " + medeniD + " Maaş: " +  maaslar[i]);
+            }else {
+                System.out.println("Uygun Kayıt Bulunamadı!");
+            }
+        }
+    }
+
+    public static void Listele(String isimler[], String dogumYerleri[], int dogumTarih[], int medeniDurum[], int maaslar[])
+    {
+        System.out.println("İsim \t Doğum Yeri \t Doğum Tarihi \t Medeni Durum \t Maaş");
+        for (int i = 0; isimler.length > i; i++)
+        {
+            String medeniD = "";
+            if(medeniDurum[i] == 0) medeniD = "Bekar";
+            else medeniD = "Evli";
+
+            System.out.print(isimler[i] + " \t " + dogumYerleri[i] + " \t " + dogumTarih[i] + " \t " + medeniD + " \t " + maaslar[i]);
+            System.out.println();
+        }
+    }
+
+
 }
